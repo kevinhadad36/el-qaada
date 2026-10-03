@@ -5,321 +5,291 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Toulouse Factory — Smash burgers & pizzas halal</title>
 <meta name="description" content="Toulouse Factory, 288 avenue de Fronton à Toulouse : smash burgers, pizzas, tex-mex et salades, 100 % halal. Sur place, à emporter et en livraison, 7 jours sur 7.">
-<meta name="theme-color" content="#0f0e12">
+<meta name="theme-color" content="#260212">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400&family=JetBrains+Mono:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wdth,wght@62..125,400..700&display=swap" rel="stylesheet">
 <style>
-  /* Système « catalogue industriel » : inspiré du DESIGN.md teenage engineering (Refero Styles).
-     Cinq neutres, angles vifs, filets d'1 px, aucune ombre, aucun dégradé. Une seule couleur : l'ambre. */
+  /* Système repris du DESIGN.md « Home page | Impossible Foods » (Refero Styles) :
+     affiche punk rouge sang sur fond velours lie-de-vin. Wine + red + blush + black + white, rien d'autre. */
   :root{
-    --canvas:#f6f8f7;   /* fond de page, fond des photos */
-    --ink:#000;         /* texte, filets forts */
-    --carbon:#0f0e12;   /* bandes sombres (noir teinté violet, jamais #000) */
-    --steel:#e5e5e5;    /* filets clairs */
-    --graphite:#b2b2b2; /* texte secondaire, filets atténués */
-    --amber:#f5b800;    /* seule couleur : triangle de statut */
-    --link:#0071bb;
+    --wine:#260212;     /* Velvet Wine : fond de page */
+    --stage:#4f0423;    /* Burgundy Stage : bandes et cartes */
+    --red:#e10600;      /* Impossible Red : actions, titres géants, onglet actif */
+    --blush:#ffc7c6;    /* Blush : texte secondaire, pilules au repos */
+    --black:#000;       /* Butcher Black : nav, filets */
+    --white:#fff;
 
-    --max:1200px;
-    --g1:15px; --g2:22px; --g3:33px; --g4:66px;
-    --gutter:clamp(16px,4vw,66px);
+    --r:15px; --r-card:12px; --r-feature:38px;
+    --max:1280px;
+    --gutter:clamp(16px,3vw,40px);
 
-    --sans:"Inter","Suisse Int'l","Helvetica Neue",Arial,sans-serif;
-    --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+    --display:"Anton","Druk Wide","Knockout",Impact,sans-serif;
+    --ui:"Archivo","Inter",Arial,sans-serif;
   }
-  *{box-sizing:border-box;margin:0;padding:0;border-radius:0}
+  *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{background:var(--canvas);color:var(--ink);font:300 15px/1.5 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body{background:var(--wine);color:var(--white);font:400 18px/1.4 var(--ui);font-stretch:88%;letter-spacing:.02em;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   img{display:block;width:100%;height:100%;object-fit:cover}
   a{color:inherit;text-decoration:none}
-  section{scroll-margin-top:66px}
+  section{scroll-margin-top:90px}
   .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
 
   /* ---------- Type ---------- */
-  .cap{font:300 13px/1.5 var(--sans);letter-spacing:.01em}
-  .mono{font:300 12px/1.5 var(--mono);letter-spacing:.02em;text-transform:lowercase}
-  .sub{font:300 19px/1.15 var(--sans)}
-  .h-sm{font:300 24px/1.15 var(--sans);letter-spacing:-.01em}
-  .h{font:300 26px/1.15 var(--sans);letter-spacing:-.01em}
-  .h-lg{font:300 40px/1.11 var(--sans);letter-spacing:-.02em}
-  .display{font:100 clamp(48px,9vw,112px)/.95 var(--sans);letter-spacing:-.04em}
-  .muted{color:#6b6b6b}
-  .link{color:var(--link)}
-  .link:hover{text-decoration:underline;text-underline-offset:3px}
-  .todo{border-bottom:1px dashed var(--graphite)}
+  .display{font:400 clamp(92px,17.5vw,231px)/.75 var(--display);letter-spacing:.03em;text-transform:uppercase;color:var(--red)}
+  .h-lg{font:400 clamp(64px,10vw,150px)/.78 var(--display);letter-spacing:.03em;text-transform:uppercase;color:var(--red)}
+  .h{font:400 clamp(36px,4vw,48px)/.9 var(--display);letter-spacing:.02em;text-transform:uppercase}
+  .eyebrow{font:500 clamp(14px,1.4vw,18px)/1 var(--ui);font-stretch:75%;letter-spacing:.06em;text-transform:uppercase;color:var(--red)}
+  .label{font:500 14px/1 var(--ui);font-stretch:75%;letter-spacing:.04em;text-transform:uppercase}
+  .blush{color:var(--blush)}
 
   /* ---------- Boutons ---------- */
-  .btn{display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 var(--g2);font:300 13px/1 var(--sans);
-    letter-spacing:.02em;border:1px solid var(--ink);background:var(--ink);color:var(--canvas);transition:background .15s,color .15s}
-  .btn:hover{background:transparent;color:var(--ink)}
-  .btn.ghost{background:transparent;color:var(--ink)}
-  .btn.ghost:hover{background:var(--ink);color:var(--canvas)}
-  .on-dark .btn{background:var(--canvas);color:var(--carbon);border-color:var(--canvas)}
-  .on-dark .btn:hover{background:transparent;color:var(--canvas)}
-  .on-dark .btn.ghost{background:transparent;color:var(--canvas)}
-  .on-dark .btn.ghost:hover{background:var(--canvas);color:var(--carbon)}
+  .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 14px;border-radius:var(--r);border:1px solid var(--red);
+    background:var(--red);color:var(--white);font:500 14px/1 var(--ui);font-stretch:75%;letter-spacing:.04em;text-transform:uppercase;
+    cursor:pointer;transition:background .15s,color .15s,border-color .15s;white-space:nowrap}
+  .btn:hover{background:var(--white);border-color:var(--white);color:var(--red)}
+  .btn.ghost{background:transparent;border-color:var(--white);color:var(--white)}
+  .btn.ghost:hover{background:var(--white);color:var(--wine)}
+  .btn svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2}
 
   /* ---------- Nav ---------- */
-  .nav{position:sticky;top:0;z-index:30;background:var(--canvas);border-bottom:1px solid var(--steel)}
-  .nav-in{display:flex;align-items:center;justify-content:space-between;height:66px}
-  .mark{display:flex;align-items:center;gap:10px;font:300 19px/1 var(--sans);letter-spacing:-.01em}
-  .mark i{width:14px;height:14px;border:1px solid var(--ink);display:inline-grid;place-items:center}
-  .mark i::after{content:"";width:6px;height:6px;background:var(--ink)}
-  .nav ul{display:flex;list-style:none;gap:var(--g1)}
-  .nav li a{display:flex;flex-direction:column;align-items:center;gap:6px;padding:0 6px;font:300 12px/1 var(--sans)}
-  .nav li a svg{width:16px;height:16px;stroke:var(--ink);fill:none;stroke-width:1}
-  .nav li a:hover span{text-decoration:underline;text-underline-offset:3px}
+  .nav{position:sticky;top:10px;z-index:30;margin:10px var(--gutter) 0}
+  .nav-in{max-width:calc(var(--max) - 2*var(--gutter));margin:0 auto;background:var(--black);border-radius:var(--r);
+    display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:8px 8px 8px 16px}
+  .logo{font:400 20px/1 var(--display);letter-spacing:.02em;color:var(--red);text-transform:uppercase}
+  .nav ul{list-style:none;display:flex;gap:28px}
+  .nav ul a{font:500 13px/1 var(--ui);font-stretch:75%;letter-spacing:.06em;text-transform:uppercase}
+  .nav ul a:hover{color:var(--blush)}
+  .nav .cta{display:flex;gap:6px;justify-content:flex-end}
+  .nav .cta .btn{padding:8px 12px;font-size:12px;border-radius:12px}
+  .nav .cta .btn.ghost{border-color:#333}
 
   /* ---------- Hero ---------- */
-  .hero{background:var(--carbon);color:var(--canvas)}
-  .hero-grid{display:grid;grid-template-columns:5fr 7fr;min-height:min(86vh,760px)}
-  .hero-copy{display:flex;flex-direction:column;justify-content:space-between;padding:var(--g4) var(--gutter) var(--g3);
-    border-right:1px solid rgba(246,248,247,.14)}
-  .hero-copy .lead{max-width:34ch;color:rgba(246,248,247,.72);margin-top:var(--g3)}
-  .hero-copy .ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:var(--g3)}
-  .hero-meta{display:flex;justify-content:space-between;gap:var(--g1);padding-top:var(--g3);border-top:1px solid rgba(246,248,247,.14);
-    margin-top:var(--g4);color:rgba(246,248,247,.6)}
-  .hero-img{position:relative;overflow:hidden}
-  .hero-img .tag{position:absolute;left:var(--g3);bottom:var(--g3);color:var(--canvas);text-transform:uppercase;letter-spacing:.08em}
+  .hero{position:relative;min-height:calc(100vh - 70px);min-height:calc(100svh - 70px);display:grid;place-items:center;text-align:center;padding:80px 0 70px;overflow:hidden}
+  .hero-in{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center}
+  .hero .brand{font:500 15px/1 var(--ui);font-stretch:75%;letter-spacing:.04em;color:var(--blush);margin-bottom:22px}
+  .hero .eyebrow{margin-bottom:18px}
+  .hero h1{position:relative}
+  .hero h1 .l2{display:block;font-size:.62em;line-height:.85;margin-top:.04em}
+  .hero h1 .bite{position:absolute;left:50%;top:69%;width:clamp(70px,9vw,130px);height:auto;aspect-ratio:1.6;transform:translate(-50%,-50%) rotate(-6deg);
+    clip-path:polygon(6% 30%,22% 6%,58% 0,88% 10%,100% 46%,90% 84%,56% 100%,18% 92%,0 66%);z-index:-1}
+  .hero .ctas{display:flex;gap:6px;margin-top:34px;flex-wrap:wrap;justify-content:center}
+  .hero .status{margin-top:22px;font:500 13px/1 var(--ui);font-stretch:75%;letter-spacing:.06em;text-transform:uppercase;color:var(--blush);display:flex;align-items:center;gap:8px}
+  .hero .status i{width:8px;height:8px;border-radius:50%;background:var(--red);animation:pulse 1.8s infinite}
+  .hero .status.closed i{background:var(--blush);animation:none}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(225,6,0,.7)}70%{box-shadow:0 0 0 10px rgba(225,6,0,0)}100%{box-shadow:0 0 0 0 rgba(225,6,0,0)}}
 
-  /* ---------- Spec strip ---------- */
-  .specs{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--ink)}
-  .spec{padding:var(--g3) var(--g2) var(--g3) 0;border-right:1px solid var(--steel)}
-  .spec + .spec{padding-left:var(--g2)}
-  .spec:last-child{border-right:0}
-  .spec .mono{color:#6b6b6b;display:block;margin-bottom:var(--g2)}
-  .spec .h-lg{display:block}
+  .blob{position:absolute;z-index:1;width:clamp(110px,15vw,220px);aspect-ratio:1;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  .blob img{clip-path:var(--shape)}
+  .b1{left:7%;top:12%;--shape:polygon(14% 2%,70% 0,96% 18%,100% 64%,82% 98%,30% 100%,2% 78%,0 26%);transform:rotate(-4deg)}
+  .b2{right:7%;top:16%;--shape:polygon(30% 0,78% 6%,100% 40%,94% 84%,58% 100%,12% 92%,0 50%,8% 14%);transform:rotate(5deg)}
+  .b3{left:5%;bottom:10%;--shape:polygon(4% 20%,40% 0,90% 8%,100% 52%,86% 94%,40% 100%,6% 86%,0 50%);transform:rotate(3deg)}
+  .b4{right:6%;bottom:12%;--shape:polygon(20% 4%,64% 0,100% 24%,96% 70%,72% 100%,22% 96%,0 64%,4% 28%);transform:rotate(-5deg)}
 
-  /* ---------- Section head ---------- */
-  .sec{padding:var(--g4) 0}
-  .sec-head{display:grid;grid-template-columns:1fr 2fr;gap:var(--g3);align-items:end;padding-bottom:var(--g2);border-bottom:1px solid var(--ink);margin-bottom:var(--g3)}
-  .sec-head p{max-width:52ch}
+  /* ---------- Ticker ---------- */
+  .ticker{background:var(--red);color:var(--wine);overflow:hidden;border-block:1px solid var(--black)}
+  .ticker-track{display:flex;width:max-content;animation:tick 28s linear infinite}
+  .ticker span{font:400 clamp(28px,3.4vw,44px)/1 var(--display);letter-spacing:.03em;text-transform:uppercase;padding:14px 0;white-space:nowrap}
+  .ticker span::after{content:"✸";margin:0 28px;color:var(--white)}
+  @keyframes tick{to{transform:translateX(-50%)}}
+
+  /* ---------- Section heads ---------- */
+  .sec{padding:clamp(64px,9vw,120px) 0}
+  .sec.stage{background:var(--stage)}
+  .head{text-align:center;margin-bottom:clamp(36px,5vw,64px)}
+  .head .eyebrow{display:block;margin-bottom:18px}
+  .head p{max-width:46ch;margin:22px auto 0;color:var(--blush)}
 
   /* ---------- Menu ---------- */
-  .tabs{display:flex;flex-wrap:wrap;border:1px solid var(--ink);width:max-content;max-width:100%;margin-bottom:var(--g3)}
-  .tabs button{font:300 13px/1 var(--sans);background:none;border:0;border-right:1px solid var(--ink);padding:12px 18px;cursor:pointer;color:var(--ink)}
-  .tabs button:last-child{border-right:0}
-  .tabs button[aria-selected="true"]{background:var(--ink);color:var(--canvas)}
-  .tabs button:focus-visible{outline:2px solid var(--amber);outline-offset:-2px}
+  .tabs{display:flex;justify-content:center;flex-wrap:wrap;gap:6px 28px;margin-bottom:34px}
+  .tab{background:none;border:0;cursor:pointer;color:var(--blush);display:flex;align-items:center;gap:8px;padding:6px 0;
+    font:500 clamp(18px,2vw,24px)/1 var(--ui);font-stretch:70%;letter-spacing:.04em;text-transform:uppercase;border-bottom:2px solid transparent}
+  .tab b{display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:var(--stage);color:var(--white);font:600 12px/1 var(--ui);border:1px solid var(--black)}
+  .tab[aria-selected="true"]{color:var(--white);border-bottom-color:var(--red)}
+  .tab[aria-selected="true"] b{background:var(--red)}
+  .tab:focus-visible{outline:2px solid var(--blush);outline-offset:4px}
 
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--steel)}
-  .card{border-right:1px solid var(--steel);border-bottom:1px solid var(--steel);display:flex;flex-direction:column}
-  .card:nth-child(3n){border-right:0}
-  .card .ph{aspect-ratio:1/1;overflow:hidden;background:#e9ecea}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+  .card{background:var(--stage);border:1px solid var(--black);border-radius:var(--r-card);overflow:hidden;display:flex;flex-direction:column}
+  .card .ph{aspect-ratio:4/3;overflow:hidden}
   .card .ph img{transition:transform .5s}
-  .card:hover .ph img{transform:scale(1.03)}
-  .card .info{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:var(--g1) var(--g1) var(--g2)}
-  .card .info .n{font:300 13px/1.4 var(--sans);text-transform:lowercase}
-  .card .info .p{font:300 13px/1.4 var(--mono)}
-  .card .info .d{grid-column:1/-1;font:300 13px/1.5 var(--sans);color:#6b6b6b}
+  .card:hover .ph img{transform:scale(1.05)}
+  .card .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .card .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+  .card .n{font:400 26px/.95 var(--display);letter-spacing:.02em;text-transform:uppercase;color:var(--blush)}
+  .card .p{font:600 16px/1 var(--ui);font-stretch:75%;color:var(--white);white-space:nowrap}
+  .card .d{font-size:14px;color:rgba(255,199,198,.75);flex:1}
+  .card .actions{display:flex;gap:6px;margin-top:8px}
+  .note{text-align:center;margin-top:24px;font-size:13px;color:rgba(255,199,198,.6)}
 
-  .list{margin-top:var(--g4);display:grid;grid-template-columns:1fr 1fr;gap:0 var(--g4)}
-  .list h3{padding:var(--g1) 0;border-bottom:1px solid var(--ink)}
-  .row{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--steel)}
-  .row .dots{border-bottom:1px dotted var(--graphite);transform:translateY(-4px)}
-  .row .p{font:300 13px/1 var(--mono)}
-  .row small{grid-column:1/-1;font-size:13px;color:#6b6b6b;margin-top:-6px}
-  .note{margin-top:var(--g2)}
+  /* ---------- Méthode ---------- */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .step{border:1px solid var(--black);border-radius:var(--r-card);background:var(--wine);padding:24px 20px 22px;display:flex;flex-direction:column;gap:14px;min-height:260px}
+  .step .num{font:400 96px/.75 var(--display);color:var(--red)}
+  .step h3{margin-top:auto}
+  .step p{font-size:15px;color:var(--blush)}
+  .step.feat{background:var(--red);border-radius:var(--r-feature)}
+  .step.feat .num{color:var(--wine)}
+  .step.feat p{color:var(--white)}
 
-  /* ---------- Smash band ---------- */
-  .band{background:var(--carbon);color:var(--canvas)}
-  .band-grid{display:grid;grid-template-columns:1fr 1fr}
-  .band-copy{padding:var(--g4) var(--gutter)}
-  .steps{list-style:none;margin-top:var(--g3);border-top:1px solid rgba(246,248,247,.14)}
-  .steps li{display:grid;grid-template-columns:48px 1fr;gap:var(--g1);padding:var(--g2) 0;border-bottom:1px solid rgba(246,248,247,.14)}
-  .steps li .mono{color:rgba(246,248,247,.5)}
-  .steps li p{color:rgba(246,248,247,.72);font-size:15px;margin-top:4px}
+  /* ---------- Chiffres ---------- */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--black);border-bottom:1px solid var(--black)}
+  .stat{padding:36px 12px;text-align:center;border-right:1px solid var(--black)}
+  .stat:last-child{border-right:0}
+  .stat .big{font:400 clamp(72px,9vw,126px)/.78 var(--display);color:var(--red);letter-spacing:.02em}
+  .stat .label{display:block;margin-top:14px;color:var(--blush)}
 
   /* ---------- Infos ---------- */
-  .infos{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid var(--ink)}
-  .infos > div{padding:var(--g3) var(--g2) var(--g3) 0;border-right:1px solid var(--steel)}
-  .infos > div + div{padding-left:var(--g2)}
-  .infos > div:last-child{border-right:0}
-  .hours{list-style:none;margin-top:var(--g2)}
-  .hours li{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--steel);font-size:14px}
-  .hours li .t{font:300 13px/1.6 var(--mono)}
-  .hours li.today{border-bottom-color:var(--ink)}
-  .hours li.today::before{content:"▸";margin-right:6px}
-  .hours li.today span:first-child{flex:1}
-  .facts{list-style:none;margin-top:var(--g2)}
-  .facts li{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--steel);font-size:14px}
-  .facts li::before{content:"";flex:0 0 7px;height:7px;margin-top:7px;border:1px solid var(--ink)}
-  .map{margin-top:var(--g3);aspect-ratio:21/8;border:1px solid var(--ink);overflow:hidden;filter:grayscale(1) contrast(1.05)}
-  .map iframe{width:100%;height:100%;border:0;display:block}
+  .infos{display:grid;grid-template-columns:1fr 1.2fr;gap:12px}
+  .panel{background:var(--stage);border:1px solid var(--black);border-radius:var(--r-feature);padding:clamp(24px,3vw,40px)}
+  .hours{list-style:none;margin-top:20px}
+  .hours li{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(0,0,0,.6);font:500 16px/1 var(--ui);font-stretch:75%;letter-spacing:.04em;text-transform:uppercase}
+  .hours li span:last-child{color:var(--blush)}
+  .hours li.today,.hours li.today span:last-child{color:var(--red)}
+  .addr{margin-top:28px;display:grid;gap:6px}
+  .pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:24px}
+  .pill{padding:8px 14px;border-radius:var(--r);border:1px solid var(--blush);color:var(--blush);font:500 13px/1 var(--ui);font-stretch:75%;letter-spacing:.04em;text-transform:uppercase}
+  .map{border:1px solid var(--black);border-radius:var(--r-feature);overflow:hidden;min-height:420px;position:relative}
+  .map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(1) contrast(1.1) brightness(.85)}
+  .map::after{content:"";position:absolute;inset:0;background:var(--stage);mix-blend-mode:color;pointer-events:none}
 
-  /* ---------- Commander ---------- */
-  .order{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--ink)}
-  .order a{display:flex;flex-direction:column;justify-content:space-between;gap:var(--g4);padding:var(--g2);border-right:1px solid var(--ink);min-height:200px;transition:background .15s,color .15s}
-  .order a:last-child{border-right:0}
-  .order a:hover{background:var(--ink);color:var(--canvas)}
-  .order a .arrow{font:100 40px/1 var(--sans)}
-  .order a .mono{opacity:.6}
+  /* ---------- Final CTA ---------- */
+  .final{text-align:center}
+  .final .display{font-size:clamp(84px,15vw,204px)}
+  .final .display .l2{display:block;font-size:.55em;line-height:.9}
+  .order{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:56px;text-align:left}
+  .order a{background:var(--wine);border:1px solid var(--black);border-radius:var(--r-card);padding:22px;display:flex;flex-direction:column;gap:30px;transition:background .15s}
+  .order a:hover{background:var(--red)}
+  .order a:hover .label{color:var(--white)}
+  .order .label{color:var(--blush)}
+  .order .go{display:flex;justify-content:space-between;align-items:end}
+  .order .go span:last-child{font:400 40px/.8 var(--display)}
 
   /* ---------- Footer ---------- */
-  footer{background:var(--carbon);color:var(--canvas);padding:var(--g3) 0}
-  .foot{display:grid;grid-template-columns:2fr 1fr 1fr;gap:var(--g3)}
-  .foot a:hover{text-decoration:underline;text-underline-offset:3px}
-  .foot .mono{color:rgba(246,248,247,.5);display:block;margin-bottom:10px}
-  .foot ul{list-style:none;display:grid;gap:6px;font-size:13px}
-  .legal{margin-top:var(--g4);padding-top:var(--g1);border-top:1px solid rgba(246,248,247,.14);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:rgba(246,248,247,.5)}
-
-  /* ---------- Triangle de statut (le seul accent de couleur) ---------- */
-  .status{position:fixed;left:16px;bottom:16px;z-index:40;display:flex;align-items:center;gap:12px;background:var(--canvas);
-    border:1px solid var(--ink);padding:10px 14px 10px 10px;max-width:calc(100vw - 32px)}
-  .status svg{flex:0 0 30px;width:30px;height:27px}
-  .status .s1{font:300 13px/1.2 var(--sans)}
-  .status .s2{font:300 11px/1.3 var(--mono);color:#6b6b6b}
-  .status.closed svg path:first-child{fill:var(--graphite)}
+  footer{background:var(--black);border-radius:var(--r-feature) var(--r-feature) 0 0;padding:56px 0 28px;margin-top:40px}
+  .foot-logo{font:400 clamp(64px,14vw,190px)/.8 var(--display);letter-spacing:.02em;color:var(--red);text-transform:uppercase}
+  .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;margin-top:36px;padding-top:24px;border-top:1px solid #2a2a2a}
+  .foot ul{list-style:none;display:flex;gap:22px;flex-wrap:wrap}
+  .foot a:hover{color:var(--blush)}
+  .legal{margin-top:24px;font-size:12px;color:rgba(255,199,198,.55);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 
   /* ---------- Responsive ---------- */
-  @media (max-width:960px){
-    .hero-grid{grid-template-columns:1fr;min-height:0}
-    .hero-img{order:-1;aspect-ratio:4/3}
-    .hero-copy{border-right:0}
-    .specs{grid-template-columns:1fr 1fr}
-    .spec:nth-child(2){border-right:0}
-    .spec:nth-child(3){padding-left:0}
-    .spec:nth-child(-n+2){border-bottom:1px solid var(--steel)}
-    .grid{grid-template-columns:1fr 1fr}
-    .card:nth-child(3n){border-right:1px solid var(--steel)}
-    .card:nth-child(2n){border-right:0}
-    .band-grid{grid-template-columns:1fr}
-    .band-grid .ph{aspect-ratio:4/3}
+  @media (max-width:1000px){
+    .nav ul{display:none}
+    .nav-in{grid-template-columns:1fr auto}
+    .steps{grid-template-columns:1fr 1fr}
     .infos{grid-template-columns:1fr}
-    .infos > div{border-right:0;border-bottom:1px solid var(--steel);padding-left:0 !important}
-    .foot{grid-template-columns:1fr 1fr}
-    .foot > div:first-child{grid-column:1/-1}
   }
   @media (max-width:680px){
-    .nav li:not(.keep){display:none}
-    .sec-head{grid-template-columns:1fr}
-    .list{grid-template-columns:1fr}
+    .nav .cta .btn.ghost{display:none}
+    .hero{min-height:0;padding:150px 0}
+    .blob{width:110px}
+    .b1{left:-14px;top:24px}.b2{right:-14px;top:30px}.b3{left:-10px;bottom:20px}.b4{right:-10px;bottom:24px}
+    .stats{grid-template-columns:1fr}
+    .stat{border-right:0;border-bottom:1px solid var(--black)}
+    .stat:last-child{border-bottom:0}
     .order{grid-template-columns:1fr}
-    .order a{border-right:0;border-bottom:1px solid var(--ink);min-height:0;gap:var(--g2)}
-    .order a:last-child{border-bottom:0}
-    .map{aspect-ratio:4/3}
-    .h-lg{font-size:32px}
-    .hero-meta{flex-direction:column}
-    body{padding-bottom:70px}
+    .map{min-height:300px}
   }
-  @media (max-width:480px){
-    .grid{grid-template-columns:1fr}
-    .card{border-right:0 !important}
-    .tabs{width:100%}
-    .tabs button{flex:1 1 50%;border-bottom:1px solid var(--ink)}
+  @media (max-width:520px){
+    .steps{grid-template-columns:1fr}
+    .step{min-height:0}
+    .tabs{gap:6px 18px}
   }
-  @media (prefers-reduced-motion:reduce){*{transition:none !important;scroll-behavior:auto !important}}
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none !important;transition:none !important;scroll-behavior:auto !important}
+  }
 </style>
 </head>
 <body>
 
 <nav class="nav" aria-label="Navigation principale">
-  <div class="wrap nav-in">
-    <a href="#top" class="mark" aria-label="Toulouse Factory, accueil"><i></i>toulouse factory</a>
+  <div class="nav-in">
+    <a href="#top" class="logo">Toulouse Factory</a>
     <ul>
-      <li><a href="#menu"><svg viewBox="0 0 16 16"><rect x="1.5" y="1.5" width="13" height="13"/><path d="M4 5h8M4 8h8M4 11h5"/></svg><span>menu</span></a></li>
-      <li><a href="#smash"><svg viewBox="0 0 16 16"><rect x="1.5" y="1.5" width="13" height="13"/><path d="M4 10h8M5 7h6"/></svg><span>le smash</span></a></li>
-      <li><a href="#infos"><svg viewBox="0 0 16 16"><rect x="1.5" y="1.5" width="13" height="13"/><path d="M8 4v4l3 2"/></svg><span>horaires</span></a></li>
-      <li class="keep"><a href="tel:+33534437135"><svg viewBox="0 0 16 16"><rect x="1.5" y="1.5" width="13" height="13"/><path d="M5 4h2l1 2.5-1.2.8a5 5 0 0 0 2 2l.8-1.2L12 9v2a1 1 0 0 1-1 1A7 7 0 0 1 4 5a1 1 0 0 1 1-1z"/></svg><span>appeler</span></a></li>
+      <li><a href="#menu">Menu ▾</a></li>
+      <li><a href="#methode">Le smash</a></li>
+      <li><a href="#infos">Horaires</a></li>
+      <li><a href="#commander">Livraison</a></li>
     </ul>
+    <div class="cta">
+      <a href="#infos" class="btn ghost"><svg viewBox="0 0 12 12"><path d="M6 11s4-3.6 4-6.5A4 4 0 0 0 2 4.5C2 7.4 6 11 6 11z"/><circle cx="6" cy="4.5" r="1.3"/></svg>Y aller</a>
+      <a href="tel:+33534437135" class="btn">Appeler ›</a>
+    </div>
   </div>
 </nav>
 
 <main id="top">
 
   <!-- HERO -->
-  <header class="hero on-dark">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <div>
-          <span class="mono" style="color:rgba(246,248,247,.55)">tf-288 / avenue de fronton / toulouse nord</span>
-          <h1 class="display" style="margin-top:var(--g3)">smash.<br>pizza.<br>halal.</h1>
-          <p class="lead sub">Burgers écrasés sur la plaque, pizzas, tex-mex et frites maison. Tout est halal, préparé à la commande, ouvert tous les jours jusqu'à minuit.</p>
-          <div class="ctas">
-            <a href="#menu" class="btn">voir le menu →</a>
-            <a href="tel:+33534437135" class="btn ghost">05 34 43 71 35</a>
-          </div>
-        </div>
-        <div class="hero-meta cap">
-          <span>sur place · à emporter · livraison</span>
-          <span>parking gratuit</span>
-        </div>
+  <header class="hero">
+    <div class="blob b1"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&h=500&q=80&auto=format&fit=crop" alt="Burger au cheddar"></div>
+    <div class="blob b2"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500&h=500&q=80&auto=format&fit=crop" alt="Pizza sortie du four"></div>
+    <div class="blob b3"><img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=500&h=500&q=80&auto=format&fit=crop" alt="Frites maison"></div>
+    <div class="blob b4"><img src="https://images.unsplash.com/photo-1562967914-608f82629710?w=500&h=500&q=80&auto=format&fit=crop" alt="Tenders de poulet"></div>
+
+    <div class="hero-in wrap">
+      <span class="brand">Toulouse Factory · 288 av. de Fronton</span>
+      <span class="eyebrow">◂ Écrasé à la minute ▸</span>
+      <h1 class="display">
+        Smash
+        <img class="bite" src="https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=400&q=80&auto=format&fit=crop" alt="">
+        <span class="l2">(100 % halal)</span>
+      </h1>
+      <div class="ctas">
+        <a href="#menu" class="btn">Voir le menu ›</a>
+        <a href="#infos" class="btn ghost"><svg viewBox="0 0 12 12"><path d="M6 11s4-3.6 4-6.5A4 4 0 0 0 2 4.5C2 7.4 6 11 6 11z"/><circle cx="6" cy="4.5" r="1.3"/></svg>Nous trouver</a>
       </div>
-      <div class="hero-img">
-        <img src="https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=1800&q=80&auto=format&fit=crop" alt="Double smash burger, cheddar fondu et pickles, sur fond sombre">
-        <span class="tag mono">fig. 01 — double original</span>
-      </div>
+      <span class="status" id="status"><i></i><span id="status-t">Ouvert 7 j / 7</span></span>
     </div>
   </header>
 
-  <!-- SPECS -->
-  <div class="wrap">
-    <div class="specs">
-      <div class="spec"><span class="mono">01 — avis google</span><span class="h-lg">4,7 / 5</span><span class="cap muted">plus de 600 avis</span></div>
-      <div class="spec"><span class="mono">02 — viande</span><span class="h-lg">100 % halal</span><span class="cap muted">sur toute la carte</span></div>
-      <div class="spec"><span class="mono">03 — ouvert</span><span class="h-lg">7 j / 7</span><span class="cap muted">jusqu'à 1 h le week-end</span></div>
-      <div class="spec"><span class="mono">04 — smash dès</span><span class="h-lg">7,50 €</span><span class="cap muted">l'original, simple steak</span></div>
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>Smash burgers</span><span>Pizzas</span><span>Tex-mex</span><span>100 % halal</span><span>Frites maison</span><span>Ouvert 7 j / 7</span>
+      <span>Smash burgers</span><span>Pizzas</span><span>Tex-mex</span><span>100 % halal</span><span>Frites maison</span><span>Ouvert 7 j / 7</span>
     </div>
   </div>
 
   <!-- MENU -->
   <section id="menu" class="sec">
     <div class="wrap">
-      <div class="sec-head">
-        <h2 class="h-lg">la carte</h2>
-        <p class="cap muted">Steak écrasé à la minute, cheddar fondu, frites maison. Des pizzas, du tex-mex et des salades pour ceux qui ne veulent pas de burger.</p>
+      <div class="head">
+        <span class="eyebrow">◂ Ce qu'on sert ▸</span>
+        <h2 class="h-lg">La carte</h2>
+        <p>Smash burgers, pizzas, tex-mex et salades. Tout est halal, tout est fait à la commande.</p>
       </div>
 
-      <div class="tabs" role="tablist" aria-label="Catégories du menu">
-        <button role="tab" aria-selected="true" data-cat="burgers">smash burgers</button>
-        <button role="tab" aria-selected="false" data-cat="pizzas">pizzas & pâtes</button>
-        <button role="tab" aria-selected="false" data-cat="texmex">tex-mex</button>
-        <button role="tab" aria-selected="false" data-cat="salades">salades</button>
-      </div>
-
+      <div class="tabs" role="tablist" aria-label="Catégories du menu" id="tabs"></div>
       <div class="grid" id="grid" aria-live="polite"></div>
-
-      <div class="list">
-        <div>
-          <h3 class="h-sm">burgers</h3>
-          <div class="row"><span>original</span><span class="dots"></span><span class="p">7,50 €</span><small>steak smashé, pickles, cheddar, oignons rouges, sauce mississippi</small></div>
-          <div class="row"><span>double original</span><span class="dots"></span><span class="p">10,00 €</span></div>
-          <div class="row"><span>triple original</span><span class="dots"></span><span class="p">13,00 €</span></div>
-          <div class="row"><span>bacon</span><span class="dots"></span><span class="p">11,50 €</span></div>
-          <div class="row"><span>poulet grillé au charbon</span><span class="dots"></span><span class="p">11,50 €</span></div>
-          <div class="row"><span>forestier</span><span class="dots"></span><span class="p">11,50 €</span><small>champignons</small></div>
-        </div>
-        <div>
-          <h3 class="h-sm">pizzas & à côté</h3>
-          <div class="row"><span>margherita</span><span class="dots"></span><span class="p">10,90 €</span></div>
-          <div class="row"><span>végétarienne</span><span class="dots"></span><span class="p">12,90 €</span></div>
-          <div class="row"><span>forestière</span><span class="dots"></span><span class="p">12,90 €</span></div>
-          <div class="row"><span>orientale</span><span class="dots"></span><span class="p">13,90 €</span></div>
-          <div class="row"><span>salade césar</span><span class="dots"></span><span class="p">14,00 €</span></div>
-          <div class="row"><span>menu enfant</span><span class="dots"></span><span class="p">7,30 €</span><small>4 nuggets ou 1 cheeseburger, frites maison, jus</small></div>
-        </div>
-      </div>
-      <p class="note cap muted">Prix indicatifs relevés sur la carte en ligne. Ils peuvent varier sur place et en livraison.</p>
+      <p class="note">Prix relevés sur la carte en ligne, donnés à titre indicatif. Ils peuvent varier sur place.</p>
     </div>
   </section>
 
-  <!-- SMASH -->
-  <section id="smash" class="band on-dark">
-    <div class="band-grid">
-      <div class="ph" style="overflow:hidden">
-        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1400&q=80&auto=format&fit=crop" alt="Burger fraîchement monté, cheddar et salade" loading="lazy">
+  <!-- MÉTHODE -->
+  <section id="methode" class="sec stage">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">◂ La méthode ▸</span>
+        <h2 class="h-lg">Écrasé.<br>Pas haché menu.</h2>
+        <p>Une boule de bœuf halal, une plaque brûlante, une spatule. C'est tout le secret du smash.</p>
       </div>
-      <div class="band-copy">
-        <span class="mono" style="color:rgba(246,248,247,.5)">procédé / smash</span>
-        <h2 class="h-lg" style="margin-top:var(--g2)">Une boule de viande, une plaque très chaude, une spatule.</h2>
-        <ol class="steps">
-          <li><span class="mono">01</span><div><span class="sub">la boule</span><p>Bœuf halal haché, façonné à la main, posé sur la plaque fumante.</p></div></li>
-          <li><span class="mono">02</span><div><span class="sub">l'écrasé</span><p>On l'écrase d'un coup : la surface caramélise, les bords deviennent croustillants.</p></div></li>
-          <li><span class="mono">03</span><div><span class="sub">le cheddar</span><p>Il fond directement sur le steak, avant de rejoindre le pain toasté.</p></div></li>
-          <li><span class="mono">04</span><div><span class="sub">le montage</span><p>Pickles, oignons rouges, sauce mississippi. Servi tout de suite.</p></div></li>
-        </ol>
-        <div style="margin-top:var(--g3)"><a href="#commander" class="btn">commander un smash →</a></div>
+      <div class="steps">
+        <div class="step"><span class="num">01</span><h3 class="h">La boule</h3><p>Le bœuf est façonné à la main et posé sur la plaque fumante.</p></div>
+        <div class="step feat"><span class="num">02</span><h3 class="h">L'écrasé</h3><p>Un coup de spatule : la viande caramélise, les bords deviennent croustillants.</p></div>
+        <div class="step"><span class="num">03</span><h3 class="h">Le cheddar</h3><p>Il fond directement sur le steak encore sur la plaque.</p></div>
+        <div class="step"><span class="num">04</span><h3 class="h">Le montage</h3><p>Pickles, oignons rouges, sauce mississippi. Servi tout de suite.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHIFFRES -->
+  <section class="sec" style="padding-bottom:0">
+    <div class="wrap">
+      <div class="stats">
+        <div class="stat"><div class="big">4,7★</div><span class="label">Note Google · plus de 600 avis</span></div>
+        <div class="stat"><div class="big">7,50€</div><span class="label">Le smash original</span></div>
+        <div class="stat"><div class="big">1H</div><span class="label">Fermeture le vendredi et le samedi</span></div>
       </div>
     </div>
   </section>
@@ -327,171 +297,157 @@
   <!-- INFOS -->
   <section id="infos" class="sec">
     <div class="wrap">
-      <div class="sec-head">
-        <h2 class="h-lg">horaires & accès</h2>
-        <p class="cap muted">Au 288 avenue de Fronton, à Toulouse nord. On peut se garer sans difficulté, et il y a une terrasse aux beaux jours.</p>
+      <div class="head">
+        <span class="eyebrow">◂ Venez manger ▸</span>
+        <h2 class="h-lg">Avenue<br>de Fronton</h2>
       </div>
-      <div class="infos" style="border-top:0">
-        <div>
-          <span class="mono muted">horaires</span>
+      <div class="infos">
+        <div class="panel">
+          <span class="eyebrow">Horaires</span>
           <ul class="hours" id="hours"></ul>
+          <div class="addr">
+            <span class="h">288 av. de Fronton</span>
+            <span class="blush">31200 Toulouse</span>
+          </div>
+          <div class="pills">
+            <span class="pill">Sur place</span><span class="pill">Terrasse</span><span class="pill">À emporter</span>
+            <span class="pill">Parking gratuit</span><span class="pill">Accès PMR</span><span class="pill">Menu enfant</span>
+          </div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:28px">
+            <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=Toulouse+Factory+288+avenue+de+Fronton+31200+Toulouse" target="_blank" rel="noopener">Itinéraire ›</a>
+            <a class="btn ghost" href="tel:+33534437135">05 34 43 71 35</a>
+          </div>
         </div>
-        <div>
-          <span class="mono muted">adresse</span>
-          <p class="sub" style="margin-top:var(--g2)">288 avenue de Fronton<br>31200 Toulouse</p>
-          <p class="cap" style="margin-top:var(--g2)"><a class="link" href="https://www.google.com/maps/dir/?api=1&destination=Toulouse+Factory+288+avenue+de+Fronton+31200+Toulouse" target="_blank" rel="noopener">itinéraire google maps ↗</a></p>
-          <p class="cap" style="margin-top:6px"><a class="link" href="tel:+33534437135">05 34 43 71 35</a></p>
+        <div class="map">
+          <iframe title="Carte : Toulouse Factory, 288 avenue de Fronton" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Toulouse+Factory,+288+avenue+de+Fronton,+31200+Toulouse&z=15&output=embed"></iframe>
         </div>
-        <div>
-          <span class="mono muted">sur place</span>
-          <ul class="facts">
-            <li>salle et terrasse</li>
-            <li>parking gratuit</li>
-            <li>accès fauteuil roulant</li>
-            <li>menu enfant</li>
-            <li>carte et sans contact</li>
-          </ul>
-        </div>
-      </div>
-      <div class="map">
-        <iframe title="Carte : Toulouse Factory, 288 avenue de Fronton" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-          src="https://www.google.com/maps?q=Toulouse+Factory,+288+avenue+de+Fronton,+31200+Toulouse&z=15&output=embed"></iframe>
       </div>
     </div>
   </section>
 
   <!-- COMMANDER -->
-  <section id="commander" class="sec" style="padding-top:0">
+  <section id="commander" class="sec stage final">
     <div class="wrap">
-      <div class="sec-head">
-        <h2 class="h-lg">commander</h2>
-        <p class="cap muted">Par téléphone pour un retrait sur place, ou en livraison avec votre application habituelle.</p>
-      </div>
+      <span class="eyebrow">◂ Une petite faim ? ▸</span>
+      <h2 class="display" style="margin-top:22px">J'ai faim<span class="l2">(vraiment)</span></h2>
       <div class="order">
         <a href="tel:+33534437135">
-          <span class="mono">a — à emporter</span>
-          <span><span class="h">05 34 43 71 35</span><br><span class="cap">appeler et passer prendre</span></span>
-          <span class="arrow">→</span>
+          <span class="label">À emporter</span>
+          <span class="go"><span class="h">05 34 43 71 35</span><span>›</span></span>
         </a>
         <a href="https://www.ubereats.com/fr/store/toulouse-factory/QSCSF1-pRmeVKZ5hm0xsog" target="_blank" rel="noopener">
-          <span class="mono">b — livraison</span>
-          <span><span class="h">uber eats</span><br><span class="cap">burgers, tex-mex, salades</span></span>
-          <span class="arrow">↗</span>
+          <span class="label">Livraison · burgers & tex-mex</span>
+          <span class="go"><span class="h">Uber Eats</span><span>↗</span></span>
         </a>
         <a href="https://deliveroo.fr/fr/menu/toulouse/boudou/pizza-and-pasta-by-toulouse-factory-288-avenue-de-fronton" target="_blank" rel="noopener">
-          <span class="mono">c — livraison</span>
-          <span><span class="h">deliveroo</span><br><span class="cap">pizza & pasta by toulouse factory</span></span>
-          <span class="arrow">↗</span>
+          <span class="label">Livraison · pizza & pasta</span>
+          <span class="go"><span class="h">Deliveroo</span><span>↗</span></span>
         </a>
       </div>
     </div>
   </section>
-
-  <!-- AMBIANCE -->
-  <div style="height:clamp(220px,33vw,520px);overflow:hidden">
-    <img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=2400&q=80&auto=format&fit=crop" alt="Burgers et frites partagés entre amis autour d'une table" loading="lazy">
-  </div>
 </main>
 
-<footer class="on-dark">
+<footer>
   <div class="wrap">
+    <div class="foot-logo">Toulouse<br>Factory</div>
     <div class="foot">
-      <div>
-        <span class="mark" style="font-size:19px"><i style="border-color:var(--canvas)"></i>toulouse factory</span>
-        <p class="cap" style="margin-top:var(--g1);color:rgba(246,248,247,.6);max-width:40ch">Smash burgers, pizzas et tex-mex halal. 288 avenue de Fronton, 31200 Toulouse.</p>
-      </div>
-      <div>
-        <span class="mono">suivre</span>
-        <ul>
-          <li><a href="https://www.instagram.com/toulouse.factory/" target="_blank" rel="noopener">instagram</a></li>
-          <li><a href="https://www.tiktok.com/@toulouse.factory" target="_blank" rel="noopener">tiktok</a></li>
-        </ul>
-      </div>
-      <div>
-        <span class="mono">pages</span>
-        <ul>
-          <li><a href="#menu">menu</a></li>
-          <li><a href="#infos">horaires & accès</a></li>
-          <li><a href="#commander">commander</a></li>
-        </ul>
-      </div>
+      <ul class="label">
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#methode">Le smash</a></li>
+        <li><a href="#infos">Horaires</a></li>
+        <li><a href="#commander">Commander</a></li>
+      </ul>
+      <ul class="label">
+        <li><a href="https://www.instagram.com/toulouse.factory/" target="_blank" rel="noopener">Instagram ↗</a></li>
+        <li><a href="https://www.tiktok.com/@toulouse.factory" target="_blank" rel="noopener">TikTok ↗</a></li>
+      </ul>
     </div>
-    <div class="legal mono">
-      <span>© <span id="y">2026</span> el qaada — siren 104 993 712</span>
-      <span>photos d'illustration</span>
+    <div class="legal">
+      <span>© <span id="y">2026</span> El Qaada · SIREN 104 993 712 · 288 avenue de Fronton, 31200 Toulouse</span>
+      <span>Photos d'illustration</span>
     </div>
   </div>
 </footer>
 
-<!-- Triangle de statut : ouvert / fermé, calculé à partir des horaires -->
-<div class="status" id="status" role="status">
-  <svg viewBox="0 0 30 27" aria-hidden="true"><path d="M15 1 29 26H1z" fill="#f5b800" stroke="#000"/><path d="M15 9v8M15 20v2" stroke="#000" stroke-width="1.6"/></svg>
-  <div><div class="s1" id="s1">toulouse factory</div><div class="s2" id="s2">288 av. de fronton</div></div>
-</div>
-
 <script>
   // ---------- Menu ----------
-  const U = id => `https://images.unsplash.com/photo-${id}?w=800&h=800&q=80&auto=format&fit=crop`;
-  const MENU = {
-    burgers: [
-      {n:"original", p:"7,50 €", d:"Steak smashé, pickles, cheddar, oignons rouges, sauce mississippi.", img:"1568901346375-23c9450c58cd"},
-      {n:"double original", p:"10,00 €", d:"Deux steaks, deux tranches de cheddar.", img:"1607013251379-e6eecfffe234"},
-      {n:"poulet charbon", p:"11,50 €", d:"Poulet grillé au charbon.", img:"1594212699903-ec8a3eca50f5"},
-    ],
-    pizzas: [
-      {n:"margherita", p:"10,90 €", d:"La classique : tomate et mozzarella.", img:"1513104890138-7c749659a591"},
-      {n:"orientale", p:"13,90 €", d:"Sur la carte « pizza & pasta ».", img:"1565299624946-b28f40a0ae38"},
-      {n:"pâtes", p:"prix sur place", d:"Sur la carte « pizza & pasta » en livraison.", img:"1621996346565-e3dbc646d9a9"},
-    ],
-    texmex: [
-      {n:"tenders", p:"7,00 €", d:"Filets de poulet panés.", img:"1562967914-608f82629710"},
-      {n:"mozzarella sticks", p:"7,00 €", d:"Panés, fondants, à partager.", img:"1531749668029-2db88e4276c7"},
-      {n:"frites maison", p:"prix sur place", d:"Faites maison.", img:"1573080496219-bb080dd4f877"},
-    ],
-    salades: [
-      {n:"salade césar", p:"14,00 €", d:"Salade, tomate, oignons frits, croûtons, maïs, poulet, vinaigrette.", img:"1546793665-c74683f339c1"},
-      {n:"menu enfant", p:"7,30 €", d:"4 nuggets ou 1 cheeseburger, frites maison, jus.", img:"1571091718767-18b5b1457add"},
-      {n:"nuggets", p:"8,00 €", d:"Poulet pané, à la carte ou en accompagnement.", img:"1562967914-608f82629710"},
-    ],
-  };
-  const grid = document.getElementById('grid');
-  function render(cat){
-    grid.innerHTML = MENU[cat].map((it,i) => `
+  const U = id => `https://images.unsplash.com/photo-${id}?w=700&h=525&q=80&auto=format&fit=crop`;
+  const MENU = [
+    {label:"Burgers", items:[
+      {n:"Original", p:"7,50 €", d:"Steak smashé, pickles, cheddar fondu, oignons rouges, sauce mississippi.", img:"1568901346375-23c9450c58cd"},
+      {n:"Double original", p:"10,00 €", d:"Deux steaks, deux fois plus de cheddar.", img:"1607013251379-e6eecfffe234"},
+      {n:"Triple original", p:"13,00 €", d:"Trois steaks. Pour les vrais.", img:"1550547660-d9450f859349"},
+      {n:"Poulet charbon", p:"11,50 €", d:"Poulet grillé au charbon.", img:"1594212699903-ec8a3eca50f5"},
+      {n:"Forestier", p:"11,50 €", d:"Le smash, avec des champignons.", img:"1571091718767-18b5b1457add"},
+    ]},
+    {label:"Pizzas", items:[
+      {n:"Margherita", p:"10,90 €", d:"La classique, tomate et mozzarella.", img:"1513104890138-7c749659a591"},
+      {n:"Orientale", p:"13,90 €", d:"Sur la carte « pizza & pasta ».", img:"1565299624946-b28f40a0ae38"},
+      {n:"Végétarienne", p:"12,90 €", d:"La version sans viande.", img:"1513104890138-7c749659a591"},
+      {n:"Pâtes", p:"Sur place", d:"À la carte « pizza & pasta », en livraison aussi.", img:"1621996346565-e3dbc646d9a9"},
+    ]},
+    {label:"Tex-mex", items:[
+      {n:"Tenders", p:"7,00 €", d:"Filets de poulet panés.", img:"1562967914-608f82629710"},
+      {n:"Mozza sticks", p:"7,00 €", d:"Panés, fondants, à partager.", img:"1531749668029-2db88e4276c7"},
+      {n:"Nuggets", p:"8,00 €", d:"Poulet pané, à la carte.", img:"1562967914-608f82629710"},
+      {n:"Frites maison", p:"Sur place", d:"Faites maison.", img:"1573080496219-bb080dd4f877"},
+    ]},
+    {label:"Salades & kids", items:[
+      {n:"Salade César", p:"14,00 €", d:"Salade, tomate, oignons frits, croûtons, maïs, poulet, vinaigrette.", img:"1546793665-c74683f339c1"},
+      {n:"Menu enfant", p:"7,30 €", d:"4 nuggets ou 1 cheeseburger, frites maison, jus de fruits.", img:"1571091718767-18b5b1457add"},
+    ]},
+  ];
+  const tabs = document.getElementById('tabs'), grid = document.getElementById('grid');
+  tabs.innerHTML = MENU.map((c,i) => `<button class="tab" role="tab" aria-selected="${i===0}" data-i="${i}">${c.label}<b>${c.items.length}</b></button>`).join('');
+  function render(i){
+    grid.innerHTML = MENU[i].items.map(it => `
       <article class="card">
         <div class="ph"><img src="${U(it.img)}" alt="${it.n}" loading="lazy"></div>
-        <div class="info"><span class="n">${String(i+1).padStart(2,'0')} — ${it.n}</span><span class="p">${it.p}</span><span class="d">${it.d}</span></div>
+        <div class="body">
+          <div class="top"><span class="n">${it.n}</span><span class="p">${it.p}</span></div>
+          <p class="d">${it.d}</p>
+          <div class="actions"><a class="btn" href="#commander">Commander ›</a><a class="btn ghost" href="#infos">Sur place</a></div>
+        </div>
       </article>`).join('');
   }
-  document.querySelectorAll('.tabs button').forEach(b => b.addEventListener('click', () => {
-    document.querySelectorAll('.tabs button').forEach(x => x.setAttribute('aria-selected', x === b));
-    render(b.dataset.cat);
-  }));
-  render('burgers');
+  tabs.addEventListener('click', e => {
+    const b = e.target.closest('.tab'); if (!b) return;
+    tabs.querySelectorAll('.tab').forEach(x => x.setAttribute('aria-selected', x === b));
+    render(+b.dataset.i);
+  });
+  render(0);
 
   // ---------- Horaires + statut ----------
   // [ouverture, fermeture] en minutes ; une fermeture > 1440 déborde sur le lendemain
-  const DAYS = ["dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi"];
+  const DAYS = ["Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"];
   const H = {0:[720,1440],1:[690,1440],2:[690,1440],3:[690,1440],4:[690,1440],5:[930,1500],6:[690,1500]};
   const fmt = m => { m %= 1440; const h = Math.floor(m/60), mn = m%60; return m === 0 ? "minuit" : `${h}h${mn ? String(mn).padStart(2,'0') : ''}`; };
   const now = new Date(), d = now.getDay(), mins = now.getHours()*60 + now.getMinutes();
   document.getElementById('hours').innerHTML = [1,2,3,4,5,6,0].map(i =>
-    `<li class="${i===d?'today':''}"><span>${DAYS[i]}</span><span class="t">${fmt(H[i][0])} – ${fmt(H[i][1])}</span></li>`).join('');
+    `<li class="${i===d?'today':''}"><span>${DAYS[i]}</span><span>${fmt(H[i][0])} – ${fmt(H[i][1])}</span></li>`).join('');
 
   const prev = (d+6)%7;
-  let open = false, closeAt;
-  if (mins >= H[d][0] && mins < H[d][1]) { open = true; closeAt = H[d][1]; }
-  else if (H[prev][1] > 1440 && mins < H[prev][1]-1440) { open = true; closeAt = H[prev][1]; }
-  const st = document.getElementById('status');
-  if (open) {
-    document.getElementById('s1').textContent = "ouvert maintenant";
-    document.getElementById('s2').textContent = `jusqu'à ${fmt(closeAt)} · 05 34 43 71 35`;
-  } else {
+  let closeAt = null;
+  if (mins >= H[d][0] && mins < H[d][1]) closeAt = H[d][1];
+  else if (H[prev][1] > 1440 && mins < H[prev][1]-1440) closeAt = H[prev][1];
+  const st = document.getElementById('status'), t = document.getElementById('status-t');
+  if (closeAt !== null) t.textContent = `Ouvert maintenant · jusqu'à ${fmt(closeAt)}`;
+  else {
     st.classList.add('closed');
-    const next = mins < H[d][0] ? `aujourd'hui à ${fmt(H[d][0])}` : `${DAYS[(d+1)%7]} à ${fmt(H[(d+1)%7][0])}`;
-    document.getElementById('s1').textContent = "fermé pour le moment";
-    document.getElementById('s2').textContent = `réouverture ${next}`;
+    t.textContent = mins < H[d][0] ? `Fermé · ouvre à ${fmt(H[d][0])}` : `Fermé · ouvre ${DAYS[(d+1)%7].toLowerCase()} à ${fmt(H[(d+1)%7][0])}`;
   }
   document.getElementById('y').textContent = now.getFullYear();
+
+  // ---------- Les photos flottantes suivent légèrement la souris ----------
+  if (matchMedia('(pointer:fine)').matches && !matchMedia('(prefers-reduced-motion:reduce)').matches) {
+    const blobs = [...document.querySelectorAll('.blob')], rot = [-4,5,3,-5], k = [18,-14,12,-16];
+    document.querySelector('.hero').addEventListener('mousemove', e => {
+      const x = e.clientX/innerWidth - .5, y = e.clientY/innerHeight - .5;
+      blobs.forEach((b,i) => b.style.transform = `translate(${x*k[i]}px,${y*k[i]}px) rotate(${rot[i]+x*4}deg)`);
+    });
+  }
 </script>
 </body>
 </html>
